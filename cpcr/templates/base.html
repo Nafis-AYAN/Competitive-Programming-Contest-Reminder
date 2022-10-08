@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+      {% block title %}
+      {% endblock %}
+    </title>
+
+</head>
+<style>
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: right;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111;
+  }
+  .logo img{
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+</style>
+<body>
+  <div class="logo">
+    <img src="images/Creative brain and light bulb logo template.png" alt="logo.png">
+  </div>
+    <ul class="container">
+      <li><a href="{% url 'signup' %}">Signup</a></li>
+      <li><a href="{% url 'login' %}">Login</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+      <li><a href="{% url 'profile' %}">Profile</a></li>
+      <li><a class="active" href="{% url 'home' %}">Home</a></li>
+    </ul>    
+  
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
+
+
