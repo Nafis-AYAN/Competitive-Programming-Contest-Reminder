@@ -6,7 +6,20 @@
 
 {% block content %}
     <h1>Welcome</h1>
-    <h2>Nafis Sadique Ayan</h2> 
+    <div id="table">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td>{{name}}</td>
+                <td>{{id}}</td>
+                <td>{{email}}</td>
+            </tr>
+        </table>
+    </div>
 {% endblock %}
 
 <!--

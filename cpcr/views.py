@@ -1,10 +1,16 @@
 from pydoc import render_doc
+from unicodedata import name
 from django.shortcuts import render, HttpResponse
 
 # Create your views here.
 
 def homepage(request):
-    return render(request,'home.html')
+    dict = {
+        'name': 'Nafis Sadique Ayan',
+        'id' : 20101042,
+        'email': '20101042@uap-bd.edu'
+    }
+    return render(request,'home.html',context=dict)
 
 def contactus(request):
     return render(request,'contact.html')
