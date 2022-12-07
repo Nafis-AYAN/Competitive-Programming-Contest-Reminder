@@ -5,12 +5,7 @@ from django.shortcuts import render, HttpResponse
 # Create your views here.
 
 def homepage(request):
-    dict = {
-        'name': 'Nafis Sadique Ayan',
-        'id' : 20101042,
-        'email': '20101042@uap-bd.edu'
-    }
-    return render(request,'home.html',context=dict)
+    return render(request,'home.html')
 
 def contactus(request):
     return render(request,'contact.html')

@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+{% load static %}
+
 <html>
 <head>
     <title>
@@ -32,24 +35,36 @@
   li a:hover {
     background-color: #111;
   }
-  .logo img{
-    color: aliceblue;
+
+  .navbar-brand {
+    padding: 0px;
+  }
+  .navbar-brand>img {
+    position: relative;
+    padding: 2px 0px 0px 2px; 
+  }
+  /* .logo img{
     position: absolute;
     margin-top: 15px;
     margin-left: 10px;
-  }
+  } */
 </style>
 <body>
-  <div class="logo">
-    <img src="images/Creative brain and light bulb logo template.png" alt="logo.png">
-  </div>
-    <ul class="container">
-      <li><a href="{% url 'signup' %}">Signup</a></li>
-      <li><a href="{% url 'login' %}">Login</a></li>
-      <li><a href="{% url 'contact' %}">Contact</a></li>
-      <li><a href="{% url 'profile' %}">Profile</a></li>
-      <li><a class="active" href="{% url 'home' %}">Home</a></li>
-    </ul>    
+  
+    <!-- <div class="logo">
+      <img src="{% static 'mylogo.png' %}" alt="logo.png">
+    </div> -->
+      <ul class="container">
+        <a class="navbar-brand" rel="home" href="#" >
+          <img style="max-width:100px;"
+             src="{% static 'mylogo2.png' %}">
+        <li><a href="{% url 'signup' %}">Signup</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        <li><a class="active" href="{% url 'home' %}">Home</a></li>
+      </ul> 
+  
   
     {% block content %}
     {% endblock %}
