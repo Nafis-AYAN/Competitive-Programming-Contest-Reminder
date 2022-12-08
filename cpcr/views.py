@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+import pip._vendor.requests 
 
 # Create your views here.
 
@@ -14,7 +15,8 @@ from .forms import CreateUserForm
 
 @login_required(login_url='login')
 def homepage(request):
-    return render(request,'home.html')
+    response = pip._vendor.requests.get('https://codeforces.com/api/contest.list').json()
+    return render(request,'home.html',response)
 
 @login_required(login_url='login')
 def contactus(request):
@@ -24,7 +26,6 @@ def contactus(request):
 def profile(request):
     return render(request,'profile.html')
 
-@login_required(login_url='login')
 def signuppage(request):
     form = CreateUserForm()
 
@@ -52,7 +53,7 @@ def loginpage(request):
             login(request, user)
             return redirect('home')
         else:
-            messages.info(request,'Username OR password is incorrect' )
+            messages.info(request,'Username or password is incorrect' )
     
     return render(request,'login.html')
 
