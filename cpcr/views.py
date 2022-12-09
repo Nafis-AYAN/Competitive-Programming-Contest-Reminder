@@ -5,7 +5,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-import pip._vendor.requests 
+import pip._vendor.requests
+from django.utils.timezone import make_aware,datetime
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 
@@ -15,8 +18,14 @@ from .forms import CreateUserForm
 
 @login_required(login_url='login')
 def homepage(request):
-    response = pip._vendor.requests.get('https://codeforces.com/api/contest.list').json()
-    return render(request,'home.html',response)
+    response = pip._vendor.requests.get('https://codeforces.com/api/contest.list?').json()
+    for contest in response['result']:
+        contest["start_time"] = make_aware(datetime.fromtimestamp(contest["startTimeSeconds"]))
+    
+    context = {
+        "data": response['result'],
+    }
+    return render(request,'home.html', context=context)
 
 @login_required(login_url='login')
 def contactus(request):

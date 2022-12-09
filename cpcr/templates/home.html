@@ -21,71 +21,47 @@
                     <li><a href="{% url 'profile' %}">Profile</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
-
-                    <i class="fas fa-regular fa-circle-xmark" onclick="closemenu()"></i>
                 </ul>
-                <i class="fas fa-solid fa-bars" onclick="openmenu()"></i>
             </nav>
         </div>
 
         <div class="header-text">
                 
-            <h1>Welcome, <span>Sultana Razia</span></h1>
+            <h1>Welcome, 
+                <span>
+                    {{request.user.username}}
+                </span>
+            </h1>
             <p>Dashboard</p>
         </div>
-    
+        {% for x in data %}
+        {% if 'BEFORE' in x.phase %}
         <div class="box">
-                {% for i in response %}
-                {{i.name}}
-                {% endfor %}
-
-                <h4>Codeforces</h4><br>
-                <p>
-                    Contest Name <br><br>
-                    Time Date <br><br>
-                    URL 
-                </p>
+            <h4>Codeforces</h4><br>
+            <p>
+                Contest ID : {{x.id}} <br>
+                Contest Name : {{ x.name }} <br>
+                Date and time : {{ x.start_time|date:'Y-m-d H:i' }} <br>
+                URL: <a href="https://codeforces.com/contest/{{ x.id }}">https://codeforces.com/contest/{{ x.id }}</a>
+            </p>
         </div>
+        {% endif %}
+        {% endfor %}
 
         <div class="box">
             <h4>Codeforces</h4><br>
             <p>
-                Contest Name <br><br>
+                Contest Name : <br><br>
                 Time Date <br><br>
                 URL 
             </p>
         </div>
-
-    </div>
-
-    
-
-
-    <!-- -----------------------------------------footer----------------------------------- -->
-
     <div class="copyright -----------------------------------------footer-----------------------------------">
         <p>Copyright © Nafis Sadique Ayan || Sultana Razia || Tasfia Rahman. Made with <i class="fa-solid fa-heart"></i></p>
     </div>
 </div>
+</div>
 
-
-
- <!-- onsubmit="myFunction()">
-
-<script type="text/javascript">
-    // get contest site name
-    function myFunction(){
-        var fname = document.getElementById("fname").value;
-        if(fname == '<>')
-        alert("Condition met")
-    }
-
-    // unix to normal dateTime
-    var unixTime = 0; // fill in your epoc time here.
-    var isoTime = new Date(unixTime).toISOString()  
-    timeEl.textContent = unixTime+' --- '+isoTime+' --- '+new Date(isoTime).toString();
-    timeEl.setAttribute('datetime', isoTime )
-</script> -->
   
 </body>
 </html>

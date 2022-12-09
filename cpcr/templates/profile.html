@@ -1,25 +1,102 @@
-{% extends "base.html" %}
-
-{% block title %}
-    Profile
-{% endblock %}
-
-{% block content %}
-    <h1>My profile</h1> 
-{% endblock %}
-
-
-<!--
 <!DOCTYPE html>
+
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'profstyle.css' %}">
+    <script src="https://kit.fontawesome.com/2b7970b984.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>My Profile</h1>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <h1>CP<span>CR</span></h1>
+                <ul id="sidemenu">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="header-text">
+                
+            <h1>MY <span>PROFILE</span></h1><br>
+            <!-- <p>Dashboard</p> -->
+        </div>
+
+        <div class="header-text2">
+            <h2>Personal Info</h2>
+            <!-- <p>Dashboard</p> -->
+        </div>
+        
+    
+        <div class="box">
+            <label for="fname">First name:</label>
+            <input type="text" id="fname" name="fname"><br>
+            <label for="lname">Last name:</label>
+            <input type="text" id="lname" name="lname"><br>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="{{request.user.username}}"><br>
+            <label for="fpwd">Password:</label>
+            <input type="password" id="pwd" name="pwd" placeholder="***************"><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="{{request.user.email}}"><br>
+            
+            <center>
+            <button class="submit">
+                Submit
+            </button>
+            </center>
+
+        </div>
+        <div class="header-text3">
+            <h2>Contest Site</h2>
+            <!-- <p>Dashboard</p> -->
+        </div>
+
+        <div class="box">
+            <input type="checkbox" name="site">
+            <label>Codeforces</label><br>
+            <input type="checkbox" name="site">
+            <label>Codechef</label><br>
+            <input type="checkbox" name="site">
+            <label>AtCoder</label><br>
+            <input type="checkbox" name="site">
+            <label>HackerRank</label><br>
+            <input type="checkbox" name="site">
+            <label>HackerEarth</label> <br>
+
+            <center>
+            <button class="submit">
+                Submit
+            </button>
+            </center>
+        </div>
+        
+
+    
+    <div class="copyright -----------------------------------------footer-----------------------------------">
+        <p>Copyright © Nafis Sadique Ayan || Sultana Razia || Tasfia Rahman. Made with <i class="fa-solid fa-heart"></i></p>
+    </div>
+</div>
 </body>
 </html>
--->
+
+    
+
+
+    <!-- -----------------------------------------footer----------------------------------- -->
+
+    
+<!-- 
+<script src="main.js"></script>
+  
+</body>
+</html> -->
