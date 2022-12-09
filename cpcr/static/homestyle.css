@@ -14,18 +14,12 @@ body{
     color: #fff;
 }
 
-#header{
-    width: 100%;
-    height: 100vh;
-    background-image: url(Images/background.jpg);
-    background-size: cover;
-    background-position: center;
-    /* background-attachment: fixed;       single line command for fixed parallax */
-}
-
 .container{
     padding: 10px 10%;
+}
 
+.header p{
+    margin-left: 150px;
 }
 
 nav{
@@ -72,6 +66,17 @@ nav ul li a:hover::after{
 .header-text{
     margin-left: 150px;
 }
+
+.running{
+    margin-left: 150px;
+}
+
+.running p{
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: -40px;
+}
+
 .header-text h1{
     font-size: 30px;
     margin-top: 50px;
@@ -82,9 +87,28 @@ nav ul li a:hover::after{
     color: #62dbdd;
 }
 .header-text p{
+    color: #62dbdd;
     font-size: 25px;
     margin-top: 30px;
+    font-weight: bold;
 }
+
+.block_container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.dropdown-site{
+    font-size: 18px;
+    padding-top: 35px;
+    padding-right: 155px;
+}
+
+#sites{
+    font-size: 14px;
+}
+
 .box{
     border: 2px outset #62dbdd; 
     margin: 50px 150px 0px;
@@ -107,10 +131,4 @@ nav ul li a:hover::after{
 
 .copyright i{
     color: #ff004f; 
-}
-
-#msg{
-    color: #61b752;
-    margin-top: -40px;
-    display: block;
 }

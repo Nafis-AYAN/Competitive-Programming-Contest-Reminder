@@ -18,12 +18,15 @@ from .forms import CreateUserForm
 
 @login_required(login_url='login')
 def homepage(request):
-    response = pip._vendor.requests.get('https://codeforces.com/api/contest.list?').json()
-    for contest in response['result']:
-        contest["start_time"] = make_aware(datetime.fromtimestamp(contest["startTimeSeconds"]))
+    # response = pip._vendor.requests.get('https://codeforces.com/api/contest.list?').json()
+    # for contest in response['result']:
+    #     contest["start_time"] = make_aware(datetime.fromtimestamp(contest["startTimeSeconds"]))
+    
+
+    response = pip._vendor.requests.get('https://kontests.net/api/v1/all').json()
     
     context = {
-        "data": response['result'],
+        "data": response,
     }
     return render(request,'home.html', context=context)
 
@@ -66,7 +69,9 @@ def loginpage(request):
     
     return render(request,'login.html')
 
+
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
 
