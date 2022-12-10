@@ -36,7 +36,18 @@ def contactus(request):
 
 @login_required(login_url='login')
 def profile(request):
-    return render(request,'profile.html')
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request,'Accout created for ' + user)
+            return redirect('login')
+
+    context = {'form' : form}
+    return render(request,'profile.html',context)
 
 def signuppage(request):
     form = CreateUserForm()
