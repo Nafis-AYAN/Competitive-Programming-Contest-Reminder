@@ -1,5 +1,6 @@
 from pydoc import render_doc
 from unicodedata import name
+import uuid
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -8,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 import pip._vendor.requests
 from django.utils.timezone import make_aware,datetime
 from django.contrib.auth.models import User
-
 
 # Create your views here.
 
@@ -36,18 +36,7 @@ def contactus(request):
 
 @login_required(login_url='login')
 def profile(request):
-    form = CreateUserForm()
-
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request,'Accout created for ' + user)
-            return redirect('login')
-
-    context = {'form' : form}
-    return render(request,'profile.html',context)
+    return render(request,'profile.html')
 
 def signuppage(request):
     form = CreateUserForm()
@@ -57,7 +46,7 @@ def signuppage(request):
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
-            messages.success(request,'Accout created for ' + user)
+            messages.success(request,'Account created for ' + user)
             return redirect('login')
 
     context = {'form' : form}

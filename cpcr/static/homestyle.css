@@ -20,8 +20,8 @@ body{
 
 .header p{
     margin-left: 150px;
+    
 }
-
 nav{
     display: flex;
     align-items: center;
@@ -74,7 +74,18 @@ nav ul li a:hover::after{
 .running p{
     font-size: 25px;
     margin-top: 20px;
-    margin-bottom: -40px;
+    
+}
+
+table{
+    text-align: center;
+    margin-left: 60px;
+    border-collapse: collapse;
+    width: 90%;
+}
+  
+tr{
+    border-bottom: 1px solid #ddd;
 }
 
 .header-text h1{

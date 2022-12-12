@@ -10,6 +10,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="{% static 'homestyle.css' %}">
     <script src="https://kit.fontawesome.com/2b7970b984.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="header">
@@ -39,18 +40,15 @@
                 <br>
                 <div class="dropdown-site">
                 <label for="sites">Choose contest site:</label>
-                    <select name="sites" id="sites">
-                        <option value="Codeforces">Codeforces</option>
-                        <option value="CodeforcesGym">Codeforces::Gym</option>
+                    <select name="item" id="item">
+                        <option value="CodeForces">Codeforces</option>
+                        <option value="CodeForces::Gym">Codeforces::Gym</option>
                         <option value="CodeChef">CodeChef</option>
                         <option value="AtCoder">AtCoder</option>
                         <option value="TopCoder">TopCoder</option>
                         <option value="HackerRank">HackerRank</option>
                         <option value="HackerEarth">HackerEarth</option>
                         <option value="LeetCode">LeetCode</option>
-                        <option value="Kick Start">Kick Start</option>
-                        <option value="CS Academy">CS Academy</option>
-                        <option value="Toph">Toph</option>
                     </select>
                 </div>
             </div>
@@ -61,19 +59,33 @@
         <div class="running">
             <p>Running Contests: </p>
         </div>
+        <br>
+        <br>
+        <br>
         
-        {% for x in data %}
-        {% if 'CODING' in x.status %} 
-        <div class="box">
-            <h4>{{x.site}}</h4><br>
-            <p>
-                Contest Name : {{ x.name }} <br>
-                Date and time : {{ x.start_time }} <br>
-                URL: <a href="{{x.url}}">{{x.url}}</a>  
-            </p>
-        </div>
-        {% endif %}
-        {% endfor %}
+        <table>
+            <thead>
+              <tr>
+                  <th>Contest Site</th>
+                  <th>Contest Name</th>
+                  <th>Date & Time</th>
+                  <th>URL</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for x in data %}
+                {% if 'CODING' in x.status %} 
+              <tr data-year= {{x.site}} >
+                  <td>{{x.site}}</td>
+                  <td>{{ x.name }}</td>
+                  <td>{{ x.start_time }}</td>
+                  <td><a href="{{x.url}}">{{x.url}}</a> </td>
+              </tr>
+              {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
 
 
         <!----------------------- For contest in 24hours contests----------------------- -->
@@ -82,19 +94,33 @@
         <div class="running">
             <p>Contests withing 24 Hours: </p>
         </div>
+        <br>
+        <br>
+        <br>
+        <table>
+            <thead>
+              <tr>
+                  <th>Contest Site</th>
+                  <th>Contest Name</th>
+                  <th>Date & Time</th>
+                  <th>URL</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for x in data %}
+                {% if 'Yes' in x.in_24_hours %}
+              <tr data-year= {{x.site}} >
+                  <td>{{x.site}}</td>
+                  <td>{{ x.name }}</td>
+                  <td>{{ x.start_time }}</td>
+                  <td><a href="{{x.url}}">{{x.url}}</a> </td>
+              </tr>
+              {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
 
-        {% for x in data %}
-        {% if 'Yes' in x.in_24_hours %}
-        <div class="box">
-            <h4>{{x.site}}</h4><br>
-            <p>
-                Contest Name : {{ x.name }} <br>
-                Date and time : {{ x.start_time }} <br>
-                URL: <a href="{{x.url}}">{{x.url}}</a>  
-            </p>
-        </div>
-        {% endif %}
-        {% endfor %}
+
 
 
         <!----------------------- For Upcoming contests----------------------- -->
@@ -103,25 +129,62 @@
         <div class="running">
             <p>Upcoming Contests: </p>
         </div>
-
-        {% for x in data %}
-        {% if 'BEFORE' in x.status %}
-        <div class="box">
-            <h4>{{x.site}}</h4><br>
-            <p>
-                Contest Name : {{ x.name }} <br>
-                Date and time : {{ x.start_time }} <br>
-                URL: <a href="{{x.url}}">{{x.url}}</a>  
-            </p>
-        </div>
-        {% endif %}
-        {% endfor %}
+        <br>
+        <br>
+        <br>
+        <table>
+            <thead>
+              <tr>
+                  <th>Contest Site</th>
+                  <th>Contest Name</th>
+                  <th>Date & Time</th>
+                  <th>URL</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for x in data %}
+                {% if 'BEFORE' in x.status %}
+              <tr data-year= {{x.site}}>
+                  <td>{{x.site}}</td>
+                  <td>{{ x.name }}</td>
+                  <td>{{ x.start_time }}</td>
+                  <td><a href="{{x.url}}">{{x.url}}</a> </td>
+              </tr>
+              {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
 
     <div class="copyright -----------------------------------------footer-----------------------------------">
         <p>Copyright © Nafis Sadique Ayan || Sultana Razia || Tasfia Rahman. Made with <i class="fa-solid fa-heart"></i></p>
     </div>
 </div>
 </div>
+
+<script>
+    var filterTable = function(item) {
+    // Get the value of the select box
+    var val = item.val();
+    console.log(val);
   
+    // Show all the rows
+    $('tbody tr').show();
+    
+    // If there is a value hide all the rows except the ones with a data-year of that value
+    if(val) {
+        $('tbody tr').not($('tbody tr[data-year=' + val + ']')).hide();
+    }
+    }
+
+
+    $('select').on('change', function(e){
+    // On change fire function
+    filterTable($(this));
+    });
+
+    // Fire function on load
+    filterTable($('select'));
+
+</script>
 </body>
 </html>

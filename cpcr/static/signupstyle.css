@@ -6,9 +6,21 @@ html {
   background: #090c10!important;
 }
 
+.title h1{
+  padding-top: 40px;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+}
+
+.title h1 span{
+  color: #62dbdd;
+}
+
 .user_card {
+  height: 600px;
   width: 350px;
-  margin-top: auto;
+  margin-top: 90px;
   margin-bottom: auto;
   background: #2b2c2f;
   position: relative;

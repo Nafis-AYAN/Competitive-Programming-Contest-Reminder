@@ -36,28 +36,17 @@
             <!-- <p>Dashboard</p> -->
         </div>
         
+            <div class="box">
+                <label for="fname">First name: {{request.user.first_name}}</label>
     
-        <div class="box">
-            <label for="fname">First name:</label>
-            <input type="text" id="fname" name="fname"><br>
-            <label for="lname">Last name:</label>
-            <input type="text" id="lname" name="lname"><br>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="{{request.user.username}}"><br>
-            <label for="fpwd">Password:</label>
-            <input type="password" id="pwd" name="pwd" placeholder="***************"><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="{{request.user.email}}"><br>
-            
-            <center>
-            <button class="submit">
-                Submit
-            </button>
-            </center>
-
-        </div>
-
+                <label for="lname">Last name: {{request.user.last_name}}</label>
+     
+                <label for="username">Username: {{request.user.username}}</label>
     
+                <label for="fpwd">Password: ************</label>
+           
+                <label for="email">Email: {{request.user.email}}</label>
+            </div>
     <div class="copyright -----------------------------------------footer-----------------------------------">
         <p>Copyright © Nafis Sadique Ayan || Sultana Razia || Tasfia Rahman. Made with <i class="fa-solid fa-heart"></i></p>
     </div>

@@ -60,7 +60,7 @@ nav ul li a:hover::after{
     width: 100%;
 }
 .header-text{
-    margin-left: 150px;
+    margin-left: 140px;
 }
 .header-text h1{
     font-size: 30px;
@@ -78,6 +78,7 @@ nav ul li a:hover::after{
     font-size: 15px;
     margin-top: 10px;
     margin-left: 140px;
+    padding-bottom: 20px;
     height: 0vh;
     
 }
@@ -90,6 +91,14 @@ nav ul li a:hover::after{
 .box h4{
     font-size: 15px;
 }
+
+.box label{
+    font-size: 20px;
+    font-weight: 400;
+    padding: 15px;
+}
+
+
 input[type=text], select {
   width: 50%;
   padding: 12px 20px;
@@ -154,7 +163,9 @@ div {
     padding: 25px 0;
     background: #262626;
     font-weight: 300;
-    margin-top: 20px;
+    margin-top: 25px;
+    position: absolute;
+    bottom: 0;
 }
 
 .copyright i{
