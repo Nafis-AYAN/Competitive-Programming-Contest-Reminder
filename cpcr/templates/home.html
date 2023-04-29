@@ -30,7 +30,7 @@
                 
             <h1>Welcome, 
                 <span>
-                    {{request.user.username}}
+                    {{request.user.first_name}} {{request.user.last_name}}
                 </span>
             </h1>
             <div class="block_container">
@@ -42,7 +42,7 @@
                 <label for="sites">Choose contest site:</label>
                     <select name="item" id="item">
                         <option value="CodeForces">Codeforces</option>
-                        <option value="CodeForces::Gym">Codeforces::Gym</option>
+                        <option value="CodeForces">Codeforces::Gym</option>
                         <option value="CodeChef">CodeChef</option>
                         <option value="AtCoder">AtCoder</option>
                         <option value="TopCoder">TopCoder</option>
@@ -92,7 +92,7 @@
         
         <br><br><hr><br>
         <div class="running">
-            <p>Contests withing 24 Hours: </p>
+            <p>Contests within 24 Hours: </p>
         </div>
         <br>
         <br>

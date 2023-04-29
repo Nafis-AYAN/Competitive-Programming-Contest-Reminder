@@ -30,3 +30,7 @@ urlpatterns = [
     path('logout/', cpcr.views.logoutUser,name='logout'),
     path('', cpcr.views.homepage,name='home'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+
+
